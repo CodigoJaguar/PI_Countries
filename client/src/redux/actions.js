@@ -1,4 +1,4 @@
-import { GET_DATA , FILTER_KONTINENT, ORDER_NAME, CHANGE_PAGE, ORDER_POPULATION, GET_COUNTRY} from "./reducer"
+import { GET_DATA , FILTER_KONTINENT, ORDER_NAME, CHANGE_PAGE, ORDER_POPULATION, GET_COUNTRY, SEARCH_COUNTRY} from "./reducer"
 import axios from "axios"
 
 
@@ -39,3 +39,10 @@ export const getCountry = (id) => {
       dispatch({type: GET_COUNTRY, payload: country})
     }
   }
+
+
+  
+export const findCountry = (Countryfound) => {
+    return { type : SEARCH_COUNTRY , payload : Countryfound}
+  }
+

@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 
  function Country(props) {
    
-
     const {Nome, Bandiera, ID, Continente } = props
-    
-    
 
     return (
        <div>

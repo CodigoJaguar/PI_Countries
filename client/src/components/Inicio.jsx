@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
 
 
-function Inicio() {
+function Start() {
 
     return (
       <div className="Very begining">
         <h1>Henry Countries</h1>
         <h2>/learn react/</h2>
-        <Link to={'/home'} > <button>INICIO</button> </Link>
-        
-        
+        <Link to={'/home'} > <button>INICIO</button> </Link> 
       </div>
     );
   }
   
-  export default Inicio;
+  export default Start;
   

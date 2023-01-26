@@ -3,7 +3,8 @@ import React from "react";
 import axios from 'axios';
 import { useState , useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { ChangePage, enviarCountries, FilterContinent, OrderName, OrderPopulation } from "../../redux/actions";
+import { Link } from 'react-router-dom'
+import { ChangePage, enviarCountries, FilterContinent, findCountry, OrderName, OrderPopulation } from "../../redux/actions";
 import Country from "../Country";
 import '../Home/Home.css';
 
@@ -14,7 +15,6 @@ function Home() {
 
    let r1 = 0;
    let r2 = 10;
-   let Change = false;
 
    const [Countries, setCountries ] = useState([]);    // Estado Local
 
@@ -57,6 +57,24 @@ function Home() {
       dispatch(OrderPopulation(e.target.value))
     }
 
+    
+    function handleSearch(e) {
+      const Value = document.querySelector('.inputSearch');
+      const Nombre = Value.value
+      axios.get(`http://localhost:3001/countries?name=${Nombre}`)                 
+      .then((res)=>res.data)    //                                   [ {...} ]
+       .then((data)=>{
+         //console.log(data[0].Nombre)
+         if (data[0]?.Nombre ) {
+          //window.alert('Country Found');
+          dispatch(findCountry(data[0]))
+       } else {
+          window.alert('Country not Found');
+       }
+         })             
+        .catch(error=>console.log(error.message))
+    }
+
 
   //--------------------------  Me muevo sobre Paise_Ordine ------------------------
   const [currentPage, setCurrentPage] = useState(0)
@@ -92,10 +110,18 @@ function Home() {
       <div className="Home">
         <h1>Henry Countries</h1>
         <h2>/Estoy en Home/</h2>
-        <input type='search' placeholder='Call me by your name'></input>
+        
+          <input  placeholder='Call me by your name' className="inputSearch"></input>
+          <button type="submit" name="search" onClick={handleSearch}> Search </button>
+       
+       
           <div className="Länderliste">
             <button name="Next" onClick={nextHandler}> Next </button>
             <button name="Prev" onClick={prevHandler}> Prev </button>
+                    
+            <Link to="/activities">
+              <button>Activities</button>
+            </Link>
               <select name="Continente" id="" onChange={handleContinent}>
                   <option value="" disabled>Select</option>
                   <option value="All">All</option>
@@ -118,11 +144,13 @@ function Home() {
                </select>
               <div className="container">
                 { Distribuzione?.map((Paese) => <Country 
-                                    ID   = {Paese.ID}
-                                    Nome  = {Paese.Nombre}
-                                    Bandiera={Paese.ImagenDeLaBandera}  
+                                    key    = {Paese.ID}
+                                    ID     = {Paese.ID}
+                                    Nome   = {Paese.Nombre}
+                                    Bandiera  ={Paese.ImagenDeLaBandera}  
                                     Continente={Paese.Continente} />  )}
               </div>
+          
           </div>
         
       </div>

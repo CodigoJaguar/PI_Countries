@@ -10,8 +10,8 @@ module.exports = (sequelize) => {
     },
     ID : {
       type : DataTypes.INTEGER,
-      primaryKey : true
-
+      primaryKey : true,
+      autoIncrement:true,
     },
     Dificultad: {
       type : DataTypes.ENUM(['1','2','3','4','5'])
@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       type : DataTypes.STRING
     },
     Temporada : {
-      type : DataTypes.ENUM(['Verano', 'Otoño', 'Invierno' , 'Primavera'])
+      type : DataTypes.ENUM(['Summer', 'Fall', 'Winter' , 'Spring'])
     },
    
   },{ timestamps: false });

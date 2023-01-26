@@ -1,12 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../components/Home/Home';
-import Inicio from '../components/Inicio';
+import Start from '../components/Inicio';
 import NotFound from '../components/NotFound';
-import { FormActivities } from '../Views/Activities/Activities';
+import FormActivities  from '../Views/Activities/Activities';
 import Detail from '../Views/CountryDetail/CountryDetail';
-
-
 
 
 function App() {
@@ -17,7 +15,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/home" component={Home} />
-          <Route exact path="/" component={Inicio} />
+          <Route exact path="/" component={Start} />
           <Route path="/countries/:id" component={Detail} />
           <Route path="/activities" component={FormActivities} />
           <Route path="*" component={NotFound} />

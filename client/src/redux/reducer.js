@@ -6,6 +6,7 @@ export const ORDER_NAME       = 'ORDER_NAME'      ;
 export const CHANGE_PAGE      = 'CHANGE_PAGE'     ;
 export const ORDER_POPULATION = 'ORDER_POPULATION'; 
 export const GET_COUNTRY      = 'GET_COUNTRY'     ;
+export const SEARCH_COUNTRY   = 'SEARCH_COUNTRY'  ;
 
 
 const initialState = {
@@ -23,9 +24,9 @@ function rootReducer(state = initialState,actions){    // actions.payload = Arra
 
     let TuttiFiltrato = [];
     let TuttiOrdinato = [];
+
    switch (actions.type) {
 
-       
        case GET_DATA:
         const Tutti = [];
         
@@ -81,12 +82,13 @@ function rootReducer(state = initialState,actions){    // actions.payload = Arra
                       ...state,
                       Detaglio: actions.payload
                     }
+        case SEARCH_COUNTRY:
+            const Trovato = [];
+            Trovato.push(actions.payload)
+            
 
-        //  case GET_COUNTRIES:
-        //                 return {
-        //                   ...state,
-        //                   countries: action.payload
-        //                 }
+        return { ...state,  Distribuzione : [...Trovato]}
+
 
        default:
            return state
