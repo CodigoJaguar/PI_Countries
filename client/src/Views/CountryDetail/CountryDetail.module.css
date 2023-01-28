@@ -1,0 +1,62 @@
+
+
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+  
+  .imgBackground{
+    filter: blur(20px);
+    width: 100%;
+    
+  }
+  .conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    
+  }
+  
+  .img {
+    height: 500px;
+    width: 750px;
+    border-radius: 10px;
+    margin-right: 100px;
+  }
+  
+  
+  #Activities{
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+
+  .activitiesCointainer{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    place-content: center;
+    gap: 80px;
+    margin: 50px 60px;
+    background-color: #87847f;
+    border-radius: 15px;
+    margin-top: 0px;
+  }
+  
+  .activitiesBox{
+    border:solid 4px rgb(137, 210, 110) ;
+    border-radius: 15px;
+    /* background-color: rgb(137, 210, 110); */
+    width: 300px;
+  }
+
+
+
+  /* object-fit: cover;   Ajusta el tamaño pero puede recortar la imagen*/

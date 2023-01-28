@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Rubik+Gemstones&display=swap');
+
+
+.containerflag{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    gap: 26px;
+    place-content: center;
+  }
+
+  h1{
+    font-family: 'Monoton';
+    color: #e4cb0f;
+    font-size: 80px;
+    font-weight: 90;
+    padding-bottom: 0px;
+    margin: 0px;
+  }
+
+  #Nav_title{
+    background-color: rgba(141, 95, 26, 0.99);
+  }
+
+  #SearchBar{
+    background-color: rgba(48, 173, 189, 0.664);
+  }
+  
+  .Home{
+    background-color: rgba(0, 255, 255, 0.349);
+  }
+
+
+/*    
+  .containerflag img{
+    border-radius:1em;
+    border: white 1px;
+    
+  }  */
+
+  

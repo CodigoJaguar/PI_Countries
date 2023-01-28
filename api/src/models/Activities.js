@@ -14,13 +14,16 @@ module.exports = (sequelize) => {
       autoIncrement:true,
     },
     Dificultad: {
-      type : DataTypes.ENUM(['1','2','3','4','5'])
+      type : DataTypes.ENUM(['1','2','3','4','5']),
+      allowNull : false,
     },
     Duracion : {
-      type : DataTypes.STRING
+      type : DataTypes.STRING,
+      allowNull : false,
     },
     Temporada : {
-      type : DataTypes.ENUM(['Summer', 'Fall', 'Winter' , 'Spring'])
+      type : DataTypes.ENUM(['Summer', 'Fall', 'Winter' , 'Spring']),
+      allowNull : false,
     },
    
   },{ timestamps: false });

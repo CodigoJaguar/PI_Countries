@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import {useDispatch, useSelector} from "react-redux"
 import { validate } from '../../handlers/Validations'
+import { NavBar } from '../../components/NavBar/NavBar'
+import style from './Activities.module.css'
 
 
 
@@ -77,14 +79,16 @@ import { validate } from '../../handlers/Validations'
 
 
   return (
-    <div>
-      <h1>Create an Activity</h1>
+    <>
+    <NavBar/>
+    <div className={style.container}>
+      <h2>Create Activity</h2>
         
-        <form onSubmit={createHandler}>
+        <form onSubmit={createHandler} className={style.form}>
           <div>
           <label>Name:</label>
           <input type="text" value={form.Nombre} onChange={changeHandler} name="Nombre"/>
-          {errors.Nombre && <p className='errorname'>{errors.Nombre}</p>}
+          {errors.Nombre && <p className={style.errorText}>{errors.Nombre}</p>}
           </div>
 
           <div>
@@ -97,6 +101,7 @@ import { validate } from '../../handlers/Validations'
             <option value={4} >4</option>
             <option value={5} >5</option>
           </select>
+          {errors.Dificultad && <p className={style.warning}>{errors.Dificultad}</p>}
           </div>
 
           <div>
@@ -108,11 +113,13 @@ import { validate } from '../../handlers/Validations'
             <option value={"Fall"}>Fall</option>
             <option value={"Winter"}>Winter</option>
           </select>
+          {errors.Temporada && <p className={style.warning}>{errors.Temporada}</p>}
           </div>
 
           <div>
           <label>Duration</label>
           <input type="text" value={form.Duracion} onChange={changeHandler} name="Duracion"/>
+          {errors.Duracion && <p className={style.errorText}>{errors.Duracion}</p>}
           </div>
 
           <div>
@@ -128,15 +135,22 @@ import { validate } from '../../handlers/Validations'
               <span> {form.ID_Nazione}</span>
               <ul>{form.ID_Nazione}</ul>
           </div>
-          <button type='submit' >Create activity</button>
-
+          
+          {(// Habilita o deshabilita boton
+            errors.Nombre || errors.Duracion ||
+            errors.Temporada || errors.Dificultad
+            || SelectedCountries.length===0) 
+            ? 
+            <button type='submit' disabled>Create</button>
+            :
+            <button type='submit' >Create</button>
+          }
           
         </form>
       
-      <Link to="/home">
-        <button>Return to Home</button>
-      </Link>
+      
     </div>
+    </>
   )
 }
 

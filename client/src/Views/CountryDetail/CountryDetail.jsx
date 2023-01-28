@@ -1,7 +1,8 @@
 import { useEffect , useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getCountry } from '../../redux/actions'
+import { NavBar } from '../../components/NavBar/NavBar'
+import style from './CountryDetail.module.css'
+
 
 
 
@@ -30,25 +31,49 @@ useEffect(() => {
 
  
 	 return (
-		 <div>
-  
-      <h1>{country?.Nombre}</h1>
-      <img src={country?.ImagenDeLaBandera} alt={`${country.Nombre} flag`} />
-      <p>Continent: {country?.Continente}</p>
-      <p>Subregin: {country?.Subregion}</p>
-      <p>Capital: {country?.Capital}</p>
-      <p>Area: {country?.Area} km2</p>
-      <p>Population: {country?.Poblacion} km2</p>
+      <>
+      <NavBar/>
+      <div>
+         <div className={style.card}>
+            <img src={country?.ImagenDeLaBandera} className={style.img} alt={`${country.Nombre} flag`} />
+               <div className={style.container}>
+                  <h2>{country?.Nombre}</h2>
+                  <p>Continent: {country?.Continente}</p>
+                  <p>Subregin: {country?.Subregion}</p>
+                  <p>Capital: {country?.Capital}</p>
+                  <p>Area: {country?.Area} km2</p>
+                  <p>Population: {country?.Poblacion} km2</p>
+               </div>
+               
+         </div>
+      <h2 id='Activities'>Activities</h2>
 
-      <h2>Activities</h2>
-        {
-          // Necesito entrar a las actividades bye
-        }
+            <div className={style.activitiesCointainer}>
+               
+               {
+                  country.Activities && country.Activities.length === 0 ?  
+                  <p>There is no activities for this country YET, if you want you could add one  
+                  <Link to="/activities">
+                  <span>HERE</span>
+                  </Link>
+                  </p>
+                  : country.Activities && country.Activities.map(activity=>
+                     <div key={activity.ID} className={style.activitiesBox}>
+                        <p>Activity: {activity.Nombre}</p>
+                        <p>Level: {activity.Dificultad}</p>
+                        <p>Duration: {activity.Duracion}</p>
+                        <p>Season: {activity.Temporada}</p>
 
-      <Link to="/home">
-        <button>Return to Home</button>
-      </Link>
-    </div>
+                     </div>
+                  )
+                  
+                  
+               }
+            
+         </div>
+
+     </div>
+    </>
   )
 }
 
@@ -80,3 +105,4 @@ export default Detail
       
 //   }, [id])
 //   console.log(country)
+

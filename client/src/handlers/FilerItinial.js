@@ -54,8 +54,7 @@ export function SortToInitialMax(TuttiFiltrato) {
 
 export function SortToInitialMin(TuttiFiltrato) {
     const NuovoVetore =
-    TuttiFiltrato.sort(function(a, b) {
-        console.log(b.Poblacion)
+    TuttiFiltrato.sort(function(a, b) {  
         return b.Poblacion - a.Poblacion;
       });
 

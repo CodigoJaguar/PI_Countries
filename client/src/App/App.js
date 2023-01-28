@@ -1,10 +1,11 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../components/Home/Home';
-import Start from '../components/Inicio';
+import Home from '../Views/Home/Home';
+import Start from '../Views/Start/Inicio';
 import NotFound from '../components/NotFound';
 import FormActivities  from '../Views/Activities/Activities';
 import Detail from '../Views/CountryDetail/CountryDetail';
+
 
 
 function App() {

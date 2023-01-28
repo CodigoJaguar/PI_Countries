@@ -1,0 +1,38 @@
+/* 
+
+button {
+    transition-duration: 0.4s;
+  }
+  
+  button:hover {
+    background-color: #f14e09;
+    color: white;
+  }
+  
+   */
+  
+  #Start {
+    margin-top: 10%;
+    font-size: 100px;
+    background-color: #2959ba;
+    border-radius: 1em;
+    transition-duration: 0.s;
+    padding: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #Start:hover {
+    background-color: #069a3f;
+    color: white;
+  }
+
+
+  #Title_start{
+    background-color: #2959ba;
+    color: aliceblue;
+  }
+
+/* 
+  #f14e09; color henry landing*/

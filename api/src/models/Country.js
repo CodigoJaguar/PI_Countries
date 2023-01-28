@@ -7,16 +7,17 @@ module.exports = (sequelize) => {
   sequelize.define('Country', {
     Nombre: {
       type: DataTypes.STRING, 
-        
+      allowNull : false,
     },
     ID : {
       type : DataTypes.STRING(3),
       primaryKey : true,
-      unique : true
-      //allowNull : false,
+      unique : true,
+      allowNull : false,
     },
     ImagenDeLaBandera : {
-      type : DataTypes.STRING
+      type : DataTypes.STRING,
+      allowNull : false,
     },
     Continente : {
       type : DataTypes.STRING

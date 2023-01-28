@@ -9,6 +9,13 @@ export const validate = (form) => {
     if(form.Duracion && form.Duracion.length < 2)
     errors.Duracion = "Add the duration of the activity please"
 
+    if(!form.Dificultad)
+    errors.Dificultad = "Add the level of the activity please"
+
+    
+    if(!form.Temporada)
+    errors.Temporada = "Add the Season of the activity please"
+
 
     return errors
 }

@@ -1,0 +1,55 @@
+
+
+  
+ .Div1 {
+    box-shadow: 0 8px 16px 0 #17ff0f33, 0 6px 20px 0 rgba(0,0,0,0.19); 
+    box-shadow: 0px 0px 8px rgb(8, 241, 86);
+    display : flex ;
+    flex-direction : column ;
+    justify-content : space-around ;
+    align-items: center ;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color:#a8e339ed;
+    border-radius: 2em;
+    width: 200px;
+    height: 408px;
+    margin-top: 20px;
+    
+ }
+
+ .h2style { 
+ color: #a10c0c ;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ font-size: 1.7em;
+ margin:1em;
+ }
+
+
+ 
+.h3style{
+   color: #041aa9 ;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1.2em;
+   margin:0em;
+   }
+
+/*  
+img {
+ border-radius:10em;
+ border: white 1px;
+ margin-bottom:.6em;
+} */
+
+#DivStyle{
+ display:flex;
+ flex-direction: column;
+ justify-content:center;
+ font-family: 'IBM Plex Mono';
+ font-weight: 600;
+ color: #4b4a4a ;
+ font-size: .9em;
+}
+

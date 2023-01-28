@@ -51,7 +51,7 @@ function rootReducer(state = initialState,actions){    // actions.payload = Arra
                 if(element.Continente === actions.payload) TuttiFiltro.push(element)
             }
         }
-        FiltroFinale = FilterInitial(TuttiFiltro)
+        (TuttiFiltro.length === 1 ) ? FiltroFinale = TuttiFiltro :  FiltroFinale = FilterInitial(TuttiFiltro)
         return  {...state , Paesi_Filtrato:[...TuttiFiltro] , Distribuzione:[...FiltroFinale], Paesi_Ordine:[...TuttiFiltro]}
   
        case ORDER_NAME:

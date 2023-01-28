@@ -1,12 +1,12 @@
-import GetCountries from "../../controllers/ErhaltenLand";
 import React from "react";
 import axios from 'axios';
 import { useState , useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import { Link } from 'react-router-dom'
 import { ChangePage, enviarCountries, FilterContinent, findCountry, OrderName, OrderPopulation } from "../../redux/actions";
-import Country from "../Country";
+import Country from "../../components/Country/Country";
 import '../Home/Home.css';
+import { NavBar } from "../../components/NavBar/NavBar";
 
 
 // Nota: Al pasar de global a local, se come tiempo que hace que las funciones no tengan los valores al momento de renderizar. (Check)
@@ -46,6 +46,7 @@ function Home() {
         const element = Distribuzione[i];
         Nuovo_vetore.push(element)
       }
+      setCurrentPage(0)
     }
 
     function handleAlfaOrder(e) {
@@ -107,42 +108,48 @@ function Home() {
     // ----------------------------------------------------------------------
 
     return (
-      <div className="Home">
+      <>
+      <div id="Nav_title">
+        <NavBar/>
         <h1>Henry Countries</h1>
-        <h2>/Estoy en Home/</h2>
+      </div>
+
+       <div className="Home">
+         <div id="SearchBar">
+            <input  placeholder='Search country by name' className="inputSearch"></input>
+            <button type="submit" name="search" onClick={handleSearch}> Search </button>
         
-          <input  placeholder='Call me by your name' className="inputSearch"></input>
-          <button type="submit" name="search" onClick={handleSearch}> Search </button>
-       
-       
-          <div className="Länderliste">
-            <button name="Next" onClick={nextHandler}> Next </button>
-            <button name="Prev" onClick={prevHandler}> Prev </button>
-                    
-            <Link to="/activities">
-              <button>Activities</button>
-            </Link>
-              <select name="Continente" id="" onChange={handleContinent}>
-                  <option value="" disabled>Select</option>
-                  <option value="All">All</option>
-                  <option value="Africa">Africa</option>
-                  <option value="Americas">Americas</option>
-                  <option value="Asia">Asia</option>
-                  <option value="Europe">Europe</option>
-                  <option value="Oceania">Oceania</option>
-                  <option value="Polar">Polar</option>
-               </select>
-               <select name="Alfabetico" id="" onChange={handleAlfaOrder}>
-                  <option value="" disabled>Select</option>
-                  <option value="Descendente">De Z -A</option>
-                  <option value="Ascendente">De A - Z</option>
-               </select>
-               <select name="Poblacion" id="" onChange={handlePopulationOrder}>
-                  <option value="" disabled>Select</option>
-                  <option value="Ascendente">Ascendente Poblacion</option>
-                  <option value="Descendente">Descendente Poblacion</option>
-               </select>
-              <div className="container">
+              <div className="Länderliste">    
+                  <select name="Continente" id="" onChange={handleContinent}>
+                      <option value="" disabled>Select</option>
+                      <option value="All">All</option>
+                      <option value="Africa">Africa</option>
+                      <option value="Americas">Americas</option>
+                      <option value="Asia">Asia</option>
+                      <option value="Europe">Europe</option>
+                      <option value="Oceania">Oceania</option>
+                      <option value="Polar">Polar</option>
+                  </select>
+                  <select name="Alfabetico" id="" onChange={handleAlfaOrder}>
+                      <option value="" disabled>Select</option>
+                      <option value="Descendente">De Z -A</option>
+                      <option value="Ascendente">De A - Z</option>
+                  </select>
+                  <select name="Poblacion" id="" onChange={handlePopulationOrder}>
+                      <option value="" disabled>Select</option>
+                      <option value="Ascendente">Ascendente Poblacion</option>
+                      <option value="Descendente">Descendente Poblacion</option>
+                  </select>
+              </div>
+          </div>
+
+               <div>
+                <button name="Prev" onClick={prevHandler}> Prev </button>
+                <span> Pagina: {currentPage}</span>
+                <button name="Next" onClick={nextHandler}> Next </button>
+               </div>
+
+              <div className="containerflag">
                 { Distribuzione?.map((Paese) => <Country 
                                     key    = {Paese.ID}
                                     ID     = {Paese.ID}
@@ -151,9 +158,9 @@ function Home() {
                                     Continente={Paese.Continente} />  )}
               </div>
           
-          </div>
-        
-      </div>
+          
+        </div>
+    </>
     );
 
   }
