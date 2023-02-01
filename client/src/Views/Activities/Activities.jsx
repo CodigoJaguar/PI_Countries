@@ -18,8 +18,8 @@ import style from './Activities.module.css'
   
   const [errors, setErrors] = useState({
     Nombre:"",
-    Dificultad:"",
-    Temporada:"",
+    Dificultad:"choose",
+    Temporada:"choose",
     Duracion:"",
     ID_Nazione:[]
   })
@@ -46,7 +46,6 @@ import style from './Activities.module.css'
     setForm({
       ...form, 
       [property]: value})
-      //console.log(form)
   }
 
   const createHandler = (e)=>{
@@ -71,16 +70,35 @@ import style from './Activities.module.css'
   
   const selectHandler = (e) => {
     
-    if(SelectedCountries.includes(e.target.value)) return 'Ya existe el pais'
-    let NewSet = []
-    const local = [e.target.value]
-    NewSet = [...local,...SelectedCountries]
+    if(SelectedCountries.includes(e.target.value)) return window.alert('Pais ya seleccionado');
+    let NewSet = [];
+    const local = [e.target.value];
+    NewSet = [...local,...SelectedCountries];
     
 
     SetSelectedCountries(NewSet)
     setForm({
       ...form, 
       ID_Nazione: NewSet})
+  }
+
+  const deselectHandler = (e) => {
+    
+    let NewSet = [];
+    const Text = e.target.innerText;
+
+    for (const ID of SelectedCountries) { // for in (indice)
+      if (ID !== Text) {
+        NewSet.push(ID)
+        
+      }
+    }
+    
+    SetSelectedCountries(NewSet)
+    setForm({
+      ...form, 
+      ID_Nazione: NewSet})
+
   }
 
 
@@ -140,8 +158,8 @@ import style from './Activities.module.css'
                     }
               </select>
               
-              <div>
-                {form.ID_Nazione.map(id=>(<ul>{id}</ul>))}  
+              <div className='IdOptions'>
+                {form.ID_Nazione.map(id=>(<ul onClick={deselectHandler}>{id}</ul>))}  
               </div>
               
               
@@ -168,8 +186,3 @@ import style from './Activities.module.css'
 
 
 export default FormActivities;
-
-//           <label>Country ID:</label>
-//           <input type="text" value={form.ID_Nazione} onChange={changeHandler} name="ID_Nazione1"/>
-
-// return <option key={country.value} value={country.Nombre}>{country.label}</option>

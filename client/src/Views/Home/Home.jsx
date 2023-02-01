@@ -166,9 +166,9 @@ function Home() {
           </div>
 
                <div>
-                <button name="Prev" onClick={prevHandler}> Prev </button>
+                <button name="Prev" onClick={prevHandler}> ⬅️ </button>
                 <span> Pagina: {currentPage+1} de {(Paesi_Ordine.length<10)? 1 : Math.ceil(Paesi_Ordine.length/10) }</span>
-                <button name="Next" onClick={nextHandler} > Next </button>
+                <button name="Next" onClick={nextHandler} > ➡️ </button>
                </div>
 
                <div className="Pages">

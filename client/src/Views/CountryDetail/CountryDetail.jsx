@@ -66,8 +66,7 @@ useEffect(() => {
 
                      </div>
                   )
-                  
-                  
+                      
                }
             
          </div>
@@ -89,20 +88,3 @@ export default Detail
 
  //---------------------------
  
-//  const dispatch = useDispatch();
-//  const country = useSelector(state=>state.Detaglio)
-//  let {id}= useParams()
-
-
-  
-//   useEffect(() => {
-//     try {
-//       dispatch(getCountry(id))   // Para este tipo de dispatch que retorna una CB/Promise, se necesita usar redux-thunk
-//     } catch (error) {
-//       console.log(error.message)
-//     }
-      
-      
-//   }, [id])
-//   console.log(country)
-
