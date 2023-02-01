@@ -2,11 +2,11 @@ import React from "react";
 import axios from 'axios';
 import { useState , useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { Link } from 'react-router-dom'
 import { ChangePage, enviarCountries, FilterContinent, findCountry, OrderName, OrderPopulation } from "../../redux/actions";
 import Country from "../../components/Country/Country";
 import '../Home/Home.css';
 import { NavBar } from "../../components/NavBar/NavBar";
+import { MapPages } from "../../handlers/MapPages";
 
 
 // Nota: Al pasar de global a local, se come tiempo que hace que las funciones no tengan los valores al momento de renderizar. (Check)
@@ -15,12 +15,13 @@ function Home() {
 
    let r1 = 0;
    let r2 = 10;
+   let pg = 1;
 
-   const [Countries, setCountries ] = useState([]);    // Estado Local
+   const [CountriesPage, setCountriesPage ] = useState([]);    // Estado Local
 
 
    const dispatch = useDispatch();
-   const { Paesi , Distribuzione ,Paesi_Ordine} = useSelector((state) => {   // Estado Global,  Arreglo de objetos countries [ {250 indice de paises}]
+   const {  Distribuzione ,Paesi_Ordine} = useSelector((state) => {   // Estado Global,  Arreglo de objetos countries [ {250 indice de paises}]
     return state;
     });
 
@@ -31,10 +32,18 @@ function Home() {
       .then((res)=>res.data)
       .then((data)=>{
          dispatch(enviarCountries(data))//  Seteo los valores del estado global
+         
          })             
         .catch(error=>console.log(error.message))
         
     },[]);
+
+    // -------------  Cada cambio en Paesi_Ordine, se actualiza l numero de paginas---
+    useEffect(()=>{
+      const Pages = MapPages(Paesi_Ordine)
+      setCountriesPage(Pages)
+      
+    },[Paesi_Ordine])
 
 
     
@@ -77,15 +86,15 @@ function Home() {
     }
 
 
-  //--------------------------  Me muevo sobre Paise_Ordine ------------------------
+  //--------------------------  Me muevo sobre Paesi_Ordine ------------------------
   const [currentPage, setCurrentPage] = useState(0)
 
   const nextHandler = () => {
     
     const countriesPerPage = 10 
-    const allCountries = Paesi_Ordine.length; //100 paises
-    const nextPage = currentPage + 1; //2
-    const firstIndex = nextPage * countriesPerPage; // 210 // 10
+    const allCountries = Paesi_Ordine.length; 
+    const nextPage = currentPage + 1; 
+    const firstIndex = nextPage * countriesPerPage; 
 
     if (firstIndex >= allCountries) return;       // 240 + 10 = 250 = length
     dispatch(ChangePage(firstIndex, countriesPerPage))
@@ -105,6 +114,18 @@ function Home() {
     dispatch(ChangePage(firstIndex, countriesPerPage))
     setCurrentPage(prevPage)
    }
+
+   const skipPage = (e) => {
+
+     let val = e.target.value -1
+     let countriesPerPage = 10 
+     const firstIndex = val * 10         //  1-1 = index = 0
+     
+     dispatch(ChangePage(firstIndex, countriesPerPage))
+     setCurrentPage(val)
+    }
+
+
     // ----------------------------------------------------------------------
 
     return (
@@ -112,6 +133,7 @@ function Home() {
       <div id="Nav_title">
         <NavBar/>
         <h1>Henry Countries</h1>
+       
       </div>
 
        <div className="Home">
@@ -145,8 +167,12 @@ function Home() {
 
                <div>
                 <button name="Prev" onClick={prevHandler}> Prev </button>
-                <span> Pagina: {currentPage}</span>
-                <button name="Next" onClick={nextHandler}> Next </button>
+                <span> Pagina: {currentPage+1} de {(Paesi_Ordine.length<10)? 1 : Math.ceil(Paesi_Ordine.length/10) }</span>
+                <button name="Next" onClick={nextHandler} > Next </button>
+               </div>
+
+               <div className="Pages">
+                {CountriesPage?.map((value)=>(<button className="Page" value={value} onClick={skipPage} >{ value }</button>))}
                </div>
 
               <div className="containerflag">
@@ -204,3 +230,5 @@ function Home() {
 //     setCountries(Nuova_matrice)               // Seteo de estado local
 //     return Nuova_matrice
 //   }
+
+//  {MapPages(Distribuzione)?.map(Page=>(<span>{Page}</span>))}

@@ -29,6 +29,16 @@
     background-color: rgba(0, 255, 255, 0.349);
   }
 
+  .Pages{
+    background-color: red;
+    align-items: baseline;
+
+  }
+
+  .Page{
+    margin: 5px;
+  }
+
 
 /*    
   .containerflag img{

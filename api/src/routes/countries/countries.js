@@ -24,8 +24,12 @@ routerEndpoint.get('/', async (req, res)=> {
         }
 
         try { 
-
-        
+        const verify = await Country.findAll();    // try to fix test :(
+        if (verify.length) {
+            console.log(verify)
+            return res.status(200).json(verify)  
+        }
+        //----------------------
         const REQ = await GetCountries();                       // Array de objetos filtrados + Switch indica si ya hay algo
         
         if (REQ.Switch) {

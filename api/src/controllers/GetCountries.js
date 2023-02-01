@@ -13,7 +13,6 @@ const GetCountries = async () =>{
         Daten_gefiltert = await Country.findAll();          // Busca en DB, falla segunda vez
         if (Daten_gefiltert.length > 0) {
             Switch = true
-            console.log(Switch)
             return { Switch }
         }
    

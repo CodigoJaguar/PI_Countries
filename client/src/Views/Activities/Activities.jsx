@@ -53,13 +53,20 @@ import style from './Activities.module.css'
     e.preventDefault();
     axios.post('http://localhost:3001/activities', form )
     .then(function (response) {
-      console.log(response+'TODO GOOD');
-      //console.log(form)
+      //console.log(response+'TODO GOOD');
+      window.alert('Activity added');
     })
     .catch(function (error) {
       console.log(error.message);
     });
 
+    setForm({
+      Nombre:"",
+      Dificultad:"",
+      Temporada:"",
+      Duracion:"",
+      ID_Nazione:[]
+    })
   }
   
   const selectHandler = (e) => {
@@ -132,8 +139,12 @@ import style from './Activities.module.css'
                       })
                     }
               </select>
-              <span> {form.ID_Nazione}</span>
-              <ul>{form.ID_Nazione}</ul>
+              
+              <div>
+                {form.ID_Nazione.map(id=>(<ul>{id}</ul>))}  
+              </div>
+              
+              
           </div>
           
           {(// Habilita o deshabilita boton

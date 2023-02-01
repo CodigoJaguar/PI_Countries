@@ -1,4 +1,4 @@
-import {FilterInitial ,  SortToInitialASC, SortToInitialDESC, SortToInitialMax, SortToInitialMin } from "../handlers/FilerItinial";
+import {FilterInitial ,  SortToInitialASC, SortToInitialDESC, SortToInitialMax, SortToInitialMin } from "../handlers/FilerInitial";
 
 export const GET_DATA         = 'GET_DATA'        ;
 export const FILTER_KONTINENT = 'FILTER_KONTINENT';

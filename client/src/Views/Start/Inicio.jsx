@@ -12,6 +12,10 @@ function Start() {
         <h1 id="Title_start">Henry Countries</h1>
         <hr />
         <Link to={'/home'} > <button id='Start'>Start</button> </Link> 
+        <hr />
+        <hr />
+        <hr />
+         <h3 >/learn react/</h3> 
       </div>
     );
   }
