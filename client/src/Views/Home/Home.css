@@ -30,7 +30,7 @@
   }
 
   .Pages{
-    background-color: red;
+    background-color: #189e3e;
     align-items: baseline;
 
   }
@@ -40,11 +40,35 @@
   }
 
 
-/*    
-  .containerflag img{
-    border-radius:1em;
-    border: white 1px;
+  .pageNumber{
+    background-color: #dcdada ;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+    -webkit-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+    -moz-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+    margin: 5px;
+  }
+  
+  .pageNumber:hover{
+    transform: scale(1.15);
+    background-color: var(--ligth-green-two);
     
-  }  */
+  }
+  .pageNumberActive{
+    background-color: var(--yellow);
+    transform: scale(1.15);
+    font-weight: bold;
+    width: 35px;
+    height: 33px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+    -webkit-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+    -moz-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+    margin: 5px;
+  }
 
   

@@ -4,6 +4,9 @@
 
 export function FilterInitial(Tutti) {                   //  Solo despliega 9 
     const Filter = []; 
+
+    if(Tutti.length < 10) return Tutti
+
       for (let i = 0; i < 9; i++) {
             const element = Tutti[i];
             Filter.push(element)

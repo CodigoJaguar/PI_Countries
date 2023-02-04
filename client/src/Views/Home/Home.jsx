@@ -21,7 +21,7 @@ function Home() {
 
 
    const dispatch = useDispatch();
-   const {  Distribuzione ,Paesi_Ordine} = useSelector((state) => {   // Estado Global,  Arreglo de objetos countries [ {250 indice de paises}]
+   const { Distribuzione ,Paesi_Ordine} = useSelector((state) => {   // Estado Global,  Arreglo de objetos countries [ {250 indice de paises}]
     return state;
     });
 
@@ -74,7 +74,7 @@ function Home() {
       axios.get(`http://localhost:3001/countries?name=${Nombre}`)                 
       .then((res)=>res.data)    //                                   [ {...} ]
        .then((data)=>{
-         //console.log(data[0].Nombre)
+        
          if (data[0]?.Nombre ) {
           //window.alert('Country Found');
           dispatch(findCountry(data[0]))
@@ -147,6 +147,7 @@ function Home() {
                       <option value="All">All</option>
                       <option value="Africa">Africa</option>
                       <option value="Americas">Americas</option>
+                      <option value="Antarctic">Antarctic</option>
                       <option value="Asia">Asia</option>
                       <option value="Europe">Europe</option>
                       <option value="Oceania">Oceania</option>
@@ -172,7 +173,10 @@ function Home() {
                </div>
 
                <div className="Pages">
-                {CountriesPage?.map((value)=>(<button className="Page" value={value} onClick={skipPage} >{ value }</button>))}
+                {CountriesPage?.map((value)=>(<button 
+                 className={currentPage === value ? 'pageNumberActive' : 'pageNumber'} 
+                 value={value} 
+                 onClick={skipPage} >{ value }</button>))}
                </div>
 
               <div className="containerflag">

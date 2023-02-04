@@ -7,12 +7,12 @@ module.exports = (sequelize) => {
   sequelize.define('Country', {
     Nombre: {
       type: DataTypes.STRING, 
-      allowNull:false,          // try to fix test :(
-      validate : {
-        notNull:{
-          msg: 'It requires a valid name'
-        }
-      }
+      // allowNull:false,          // try to fix test :(
+      // validate : {
+      //   notNull:{
+      //     msg: 'It requires a valid name'
+      //   }
+      // }
       
     },
     ID : {

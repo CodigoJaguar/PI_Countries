@@ -9,102 +9,202 @@
     
 
 
-  .container{
-    display: grid;
-    place-items: center;
-    flex-direction: column;
-  }
-  
-  
-  .form{
-    display: grid;
-    place-items: flex-start; 
-    background-color:  rgb(128, 130, 94);
-    border-radius: 15px;
-    width: 600px;
-    padding: 50px;
-  }
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+ 
+.form{
+  display: grid;
+  place-items: flex-start; 
+  background-color:  rgb(128, 130, 94);
+  border-radius: 15px;
+  width: 400px;
+  padding: 40px;
+
+  box-shadow: 3px 5px 5px 1px rgba(0,0,0,0.07);
+  -webkit-box-shadow: 3px 5px 5px 1px rgba(0,0,0,0.07);
+  -moz-box-shadow: 3px 5px 5px 1px rgba(0,0,0,0.07);
+}
+
   
   .form label {
     font-weight: bold;
     margin-bottom: 4px;
     margin-right: 6px;
   }
-  
-  .inputName input , .inputCountry input{
+
+  .inputName input {
     border: none;
     border-radius: 8px;
-    height: 30px;
-    width: 430px;
+    height: 20px;
+    width: 320px;
     padding: 6px;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 18px;
+    background-color: var(--text-input-field);
+  }
+
+  
+  .inputDuration input {
+    border: none;
+    border-radius: 8px;
+    height: 20px;
+    width: 300px;
+    padding: 6px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    background-color: var(--text-input-field);
   }
   
-  .inputCountry{
+  .inputLevel{
     display: flex;
     width: 400px;
   }
-  
-  .inputDuration input{
-    font-size: 20px ;
+
+  .inputLevel select {
     border: none;
     border-radius: 8px;
-    height: 30px;
-    width: 50px;
+    height: 37px;
+    width: 310px;
     padding: 6px;
-    margin-right: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .inputLevel input , .inputSeason input{
-    width: 20px;
-    height: 20px;
-    margin: 15px;
-  }
-  
-  .inputLevel label , .inputSeason label{
-    font-size: 20px;
-  }
-  
-  .confirmForm{
-    justify-self: center;
-    margin-top: 35px;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.737);
-  }
-  
-  .errorText{
-    
-    margin: 0;
-    margin-left: 30px;
     margin-bottom: 10px;
-    color: red;
-    font-size: medium;
-    border: thin;
-    border-radius: 2px;
-    border-color: aliceblue;
-    
-  }
-  
-  .errorSelectText{
-    margin: 3px;
-    margin-left: 25px;
-    margin-bottom: 25px;
-    color: rgb(215, 104, 25);
-    justify-content: flex-start;
-  }
-  
-  .submitButton{
-    background-color: aqua;
-  }
-  
-  .noDisplay{
-    background-color: blue;
-    display: block;
-    
+    font-size: 18px;
+    background-color: var(--text-input-field);
   }
 
-  .IdOptions{
-    height: 50px;
+
+  .inputSeason{
+    display: flex;
+    width: 400px;
   }
+
+  .inputSeason select {
+    border: none;
+    border-radius: 8px;
+    height: 37px;
+    width: 310px;
+    padding: 6px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    background-color: var(--text-input-field);
+  }
+  
+
+  
+.inputCountry select {
+  border: none;
+  border-radius: 8px;
+  height: 37px;
+  width: 310px;
+  padding: 6px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  background-color: var(--text-input-field);
+}
+
+.inputCountry{
+  display: flex;
+  width: 400px;
+}
+
+
+.selectedContainer{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  
+}
+
+.errorText{ 
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  color: red;
+  font-size: medium;
+  border: thin;
+  border-radius: 2px;
+  border-color: aliceblue;
+  
+}
+
+.errorSelectText{
+  margin: 3px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  color: rgb(215, 104, 25);
+  justify-content: flex-start;
+}
+
+
+
+.submitButton{
+  
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  
+  place-self: left;
+  height: 50px;
+  width: 200px;
+  margin-top: 20px;
+
+  background-color: var(--yellow);
+  box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+  -webkit-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+  -moz-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+  border: none;
+  border-radius: 50px;
+
+}
+
+
+
+.updateButton{
+  
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  
+  place-self: left;
+  height: 50px;
+  width: 200px;
+  margin-top: 20px;
+
+  background-color: rgb(128, 130, 94);
+  box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+  -webkit-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+  -moz-box-shadow: -3px 1px 7px -3px rgba(43,43,43,0.42);
+  border: none;
+  border-radius: 50px;
+
+}
+
+
+.IdOptions{
+  height: 50px;
+}
+
+
+
+.confirmForm{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--yellow);
+  border-radius: 15px;
+  padding: 25px;
+  margin-left: 50px;
+  align-items: flex-start;
+  width: 350px;
+
+  box-shadow: 3px 5px 5px 1px rgba(0,0,0,0.07);
+-webkit-box-shadow: 3px 5px 5px 1px rgba(0,0,0,0.07);
+-moz-box-shadow: 3px 5px 5px 1px rgba(0,0,0,0.07);
+}
+
+.CreateActivity{
+  background-color: aqua;
+  color: rgb(14, 13, 12);
+  border-radius: 15px;
+}

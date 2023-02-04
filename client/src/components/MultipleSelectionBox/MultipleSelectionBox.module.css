@@ -1,0 +1,24 @@
+.countryContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  padding: 3px;
+  border-radius: 10px;
+  height: 30px;
+}
+
+.countryContainer p{
+  margin-left: 5px;
+}
+
+.countryContainer h4{
+  background-color: azure;
+  border-radius: 2px;
+  height: fit-content;
+  margin: 5px;
+}
+
+.countryContainer h4:hover{
+  background-color: aquamarine;
+}

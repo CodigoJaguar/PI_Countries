@@ -28,6 +28,48 @@ routerEndActivities.post('/', async (req, res)=> {
 
     });
 
+    routerEndActivities.delete('/' ,async (req,res)=>{
+
+        const {Nombre} = req.body
+        try {
+
+            await Activities.destroy({
+                where: {
+                  Nombre: Nombre
+                },
+                force: true
+              });
+            
+              res.status(200).send('Activity deleted') 
+        } catch (error) {
+            res.status(404).send(error.message)
+        }
+
+    });
+
+    routerEndActivities.put('/:attribute',async(req,res)=>{
+        const {attribute} = req.params;     // Nombre de Actividad
+        const {Duracion,Temporada,Dificultad}  = req.query;
+
+        try {
+            const Activity = await Activities.update(
+                {
+                    Duracion  : Duracion,
+                    Temporada : Temporada,
+                    Dificultad: Dificultad
+                },
+                {
+                    where:{Nombre : attribute}
+                }
+            );
+
+
+            res.status(200).send('Actividad actualizada')
+        } catch (error) {
+            res.status(404).send(error.message)
+        }
+     });
+
 
 
     module.exports = routerEndActivities

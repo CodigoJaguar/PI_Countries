@@ -24,12 +24,7 @@ routerEndpoint.get('/', async (req, res)=> {
         }
 
         try { 
-        const verify = await Country.findAll();    // try to fix test :(
-        if (verify.length) {
-            console.log(verify)
-            return res.status(200).json(verify)  
-        }
-        //----------------------
+     
         const REQ = await GetCountries();                       // Array de objetos filtrados + Switch indica si ya hay algo
         
         if (REQ.Switch) {
@@ -67,18 +62,18 @@ routerEndpoint.get('/', async (req, res)=> {
      });
 
      
-    // routerEndpoint.get('/', async (req, res)=> {  
-    //     try {
-    //         const {name} = req.query;
-    //         const character = await Country.findAll({
-    //             where:{[Nombre] : name}
-    //             }
-    //           );
+    routerEndpoint.put('/', async (req, res)=> {  
+        try {
+            const {name} = req.query;
+            const character = await Country.findAll({
+                where:{[Nombre] : name}
+                }
+              );
             
-    //         res.status(200).send(character)
-    //     } catch (error) {
-    //         res.status(404).send(error.message) 
-    //     } 
-    //  });
+            res.status(200).send(character)
+        } catch (error) {
+            res.status(404).send(error.message) 
+        } 
+     });
 
 module.exports = routerEndpoint
