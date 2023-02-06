@@ -104,8 +104,8 @@ import { MultipleSelectionBox } from '../../components/MultipleSelectionBox/Mult
     e.preventDefault();
     console.log(updateform)
     const { Temporada,Duracion,Dificultad,Nombre} = updateform
-                      //localhost:3001/activities/Santa mz?Duracion=10minutosALV&Dificultad=2&Temporada=Winter  &Dificultad=${Dificultad}&Temporada=${Temporada}
-    axios.put(`http://localhost:3001/activities/:${Nombre}?Duracion=${Duracion}`)
+                    //localhost:3001/activities/Santa mz?Duracion=10minutosALV&Dificultad=2&Temporada=Winter  ---->  Nota:  los : no se aplican si hago el request
+    axios.put(`http://localhost:3001/activities/${Nombre}?Duracion=${Duracion}&Dificultad=${Dificultad}&Temporada=${Temporada}`)
       .then(function (response) {
         console.log(response)
       window.alert('Activity updated');

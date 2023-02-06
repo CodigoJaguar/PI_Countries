@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const routerEndActivities = Router();
 //const { Country } = require('../../models/Country')                // Importamos modelo
-const { Country , Activities} = require('../../db');
+const { Country , Activities ,CountryActivities} = require('../../db');
 const GetActivities = require('../../controllers/GetActivities');
 
 
@@ -30,12 +30,13 @@ routerEndActivities.post('/', async (req, res)=> {
 
     routerEndActivities.delete('/' ,async (req,res)=>{
 
-        const {Nombre} = req.body
+        const {ID} = req.body
+
         try {
 
-            await Activities.destroy({
+            await CountryActivities.destroy({      // Se crea nueva tabla CountryActivities Siendo Entidad-Relacion de con atributos [ 'CountryID', 'ActivityID' ]
                 where: {
-                  Nombre: Nombre
+                    CountryID: ID
                 },
                 force: true
               });
@@ -49,6 +50,7 @@ routerEndActivities.post('/', async (req, res)=> {
 
     routerEndActivities.put('/:attribute',async(req,res)=>{
         const {attribute} = req.params;     // Nombre de Actividad
+        console.log(req)
         const {Duracion,Temporada,Dificultad}  = req.query;
 
         try {
@@ -75,7 +77,7 @@ routerEndActivities.post('/', async (req, res)=> {
     module.exports = routerEndActivities
 
 
-    // ----- codigo para buscar 1 -----------
+    // ----- codigo para buscar 1 ----------- 
     // const result = await Country.findOne({
     //     where: { ID: REQ.ID_Nazione },
     //     include: Activities

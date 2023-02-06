@@ -2,15 +2,16 @@ import { useEffect , useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { NavBar } from '../../components/NavBar/NavBar'
 import style from './CountryDetail.module.css'
+import axios from 'axios'
 
 
 
-
- const Detail = (props) => {
+const Detail = (props) => {
 	 
   
 const [country, setCountry] = useState({});
 const {id} = useParams(); 
+const [State , setState] = useState(false)
 
 
 useEffect(() => {
@@ -26,8 +27,28 @@ useEffect(() => {
        .catch((err) => {
           window.alert('No hay países con ese ID');
        });
-    return setCountry({});
- }, [id]);
+    //return setCountry({});
+ }, [id,State]);
+
+
+ const deleteHandler = (e)=>{
+   e.preventDefault();
+
+   axios.delete('http://localhost:3001/activities', {data:country} )   //  Observe the data keyword this time. Very important
+   .then(function (response) {
+     
+     window.alert('Activity deleted, back to home to refresh ');
+   })
+   .catch(function (error) {
+     console.log(error.message);
+   });
+
+   setState(!State)
+
+
+ }
+
+
 
  
 	 return (
@@ -49,7 +70,6 @@ useEffect(() => {
       <h2 id='Activities'>Activities</h2>
 
             <div className={style.activitiesCointainer}>
-               
                {
                   country.Activities && country.Activities.length === 0 ?  
                   <p>There is no activities for this country YET, if you want you could add one  
@@ -57,18 +77,16 @@ useEffect(() => {
                   <span>HERE</span>
                   </Link>
                   </p>
-                  : country.Activities && country.Activities.map(activity=>
+                  : country.Activities && country.Activities?.map(activity=>
                      <div key={activity.ID} className={style.activitiesBox}>
                         <p>Activity: {activity.Nombre}</p>
                         <p>Level: {activity.Dificultad}</p>
                         <p>Duration: {activity.Duracion}</p>
                         <p>Season: {activity.Temporada}</p>
-
+                        <button onClick={deleteHandler} value={id}>Delete</button>
                      </div>
-                  )
-                      
+                  )    
                }
-            
          </div>
 
      </div>
